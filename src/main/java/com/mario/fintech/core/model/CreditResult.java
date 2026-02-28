@@ -1,45 +1,42 @@
 package com.mario.fintech.core.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mario.fintech.core.model.enums.RejectionReason;
+
 public class CreditResult {
 
-    private boolean approved;
-    private double assignedLimit;
-    private double interestRate;
-    private String remarks;
+    private final boolean approved;
+    private final double assignedLimit;
+    private final double interestRate;
+    private final RejectionReason rejectionReason;
 
-    public CreditResult() {
+    @JsonCreator
+    public CreditResult(
+            @JsonProperty("approved") boolean approved,
+            @JsonProperty("assignedLimit") double assignedLimit,
+            @JsonProperty("interestRate") double interestRate,
+            @JsonProperty("rejectionReason") RejectionReason rejectionReason) {
+        this.approved = approved;
+        this.assignedLimit = assignedLimit;
+        this.interestRate = interestRate;
+        this.rejectionReason = rejectionReason;
     }
 
     public boolean isApproved() {
         return approved;
     }
 
-    public void setApproved(boolean approved) {
-        this.approved = approved;
-    }
-
     public double getAssignedLimit() {
         return assignedLimit;
-    }
-
-    public void setAssignedLimit(double assignedLimit) {
-        this.assignedLimit = assignedLimit;
     }
 
     public double getInterestRate() {
         return interestRate;
     }
 
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public RejectionReason getRejectionReason() {
+        return rejectionReason;
     }
 
 }

@@ -1,0 +1,70 @@
+[
+  {
+    "description": "Applicant with income as emplye",
+    "applicant": {
+      "name": "Enrique Hernandez",
+      "age": 30,
+      "monthlyIncome": 25000,
+      "creditScore": 680,
+      "debtAmount": 6000,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 50000,
+      "interestRate": 15.0,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Applicant with income as retired",
+    "applicant": {
+      "name": "Humberto Vargas",
+      "age": 55,
+      "monthlyIncome": 12500,
+      "creditScore": 700,
+      "debtAmount": 3000,
+      "employmentType": "RETIRED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 25000,
+      "interestRate": 15.0,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Applicant with income as freelance",
+    "applicant": {
+      "name": "Sandra Guzman",
+      "age": 28,
+      "monthlyIncome": 15000,
+      "creditScore": 720,
+      "debtAmount": 6500,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 75000,
+      "interestRate": 8.0,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Applicant with income as freelance",
+    "applicant": {
+      "name": "Ana Vazquez",
+      "age": 33,
+      "monthlyIncome": 33000,
+      "creditScore": 750,
+      "debtAmount": 12000,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 165000,
+      "interestRate": 8.0,
+      "rejectionReason": "NONE"
+    }
+  }
+]

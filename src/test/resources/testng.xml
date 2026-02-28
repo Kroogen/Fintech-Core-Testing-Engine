@@ -1,9 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Fintech Core Suite" parallel="classes" thread-count="2">
 
-    <test name="Regression tests">
+    <test name="Full Execution Tests">
         <groups>
             <run>
+                <include name="smoke"/>
                 <include name="regression"/>
             </run>
         </groups>
@@ -11,6 +12,7 @@
         <classes>
             <class name="com.mario.fintech.tests.credit.AgeBoundaryTest"/>
             <class name="com.mario.fintech.tests.credit.CreditScoreLogicTest"/>
+            <class name="com.mario.fintech.tests.credit.FraudApplicantsTest"/>
         </classes>
     </test>
 

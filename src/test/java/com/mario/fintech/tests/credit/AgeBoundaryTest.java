@@ -3,31 +3,28 @@ package com.mario.fintech.tests.credit;
 import com.mario.fintech.core.model.Applicant;
 import com.mario.fintech.core.model.CreditResult;
 import com.mario.fintech.core.services.CreditService;
+import com.mario.fintech.tests.models.CreditTestData;
+import com.mario.fintech.tests.utils.JsonDataReader;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.util.List;
+
 public class AgeBoundaryTest {
 
     private CreditService creditService;
 
-    private final int VALID_AGE = 40;
-    private final int VALID_INCOME = 4000;
-    private final int VALID_SCORE = 700;
-    private final double VALID_Debt = 0.0;
-
     @DataProvider
-    public Object[][] ageProvider() {
-        // Structure { int age, boolean expected_result}
-        return new Object[][]{
-                {17, false},
-                {18, true},
-                {19, true},
-                {74, true},
-                {75, true},
-                {76, false}
-        };
+    public Object[][] jsonDataProvider() throws IOException {
+        List<CreditTestData> testData = JsonDataReader.getTestData("ages_scenarios.json");
+        Object[][] data = new Object[testData.size()][1];
+        for (int i = 0; i < testData.size(); i++) {
+            data[i][0] = testData.get(i);
+        }
+        return data;
     }
 
     @BeforeClass(groups = "smoke")
@@ -35,22 +32,12 @@ public class AgeBoundaryTest {
         creditService = new CreditService();
     }
 
-    @Test(dataProvider = "ageProvider", groups = "smoke")
-    public void testAgeBoundary(int age, boolean expectedResult) {
-        Applicant applicant = createValidApplicant();
-        applicant.setAge(age);
+    @Test(dataProvider = "jsonDataProvider", groups = "smoke")
+    public void testAgeBoundary(CreditTestData testData) {
+        Applicant applicant = testData.getApplicant();
         CreditResult creditResult = creditService.evaluateCredit(applicant);
         Assert.assertEquals(creditResult.isApproved(),
-                expectedResult,
-                "Failed for age: " + age);
-    }
-
-    private Applicant createValidApplicant() {
-        Applicant applicant = new Applicant();
-        applicant.setAge(VALID_AGE);
-        applicant.setMonthlyIncome(VALID_INCOME);
-        applicant.setCreditScore(VALID_SCORE);
-        applicant.setDebtAmount(VALID_Debt);
-        return applicant;
+                testData.getCreditResult().isApproved(),
+                "The credit result is: " + creditResult.isApproved() + " but should be: " + testData.getCreditResult().isApproved());
     }
 }

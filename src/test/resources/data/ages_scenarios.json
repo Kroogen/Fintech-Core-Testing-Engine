@@ -1,0 +1,104 @@
+[
+  {
+    "description": "No valid age, under allowed",
+    "applicant": {
+      "name": "Laura Martinez",
+      "age": 17,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "INVALID_AGE"
+    }
+  },
+  {
+    "description": "Valid age, in the limit allowed",
+    "applicant": {
+      "name": "Daniel Hernandez",
+      "age": 18,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 42000,
+      "interestRate": 15,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Valid age scenario, 19",
+    "applicant": {
+      "name": "Sofia Ramirez",
+      "age": 19,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 42000,
+      "interestRate": 15,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Valid age scenario, 74",
+    "applicant": {
+      "name": "Carlos Gomez",
+      "age": 74,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 42000,
+      "interestRate": 15,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "Valid up limit age scenario",
+    "applicant": {
+      "name": "Mariana Lopez",
+      "age": 75,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": true,
+      "assignedLimit": 42000,
+      "interestRate": 15,
+      "rejectionReason": "NONE"
+    }
+  },
+  {
+    "description": "No valid age, above the limit",
+    "applicant": {
+      "name": "Javier Torres",
+      "age": 76,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "INVALID_AGE"
+    }
+  }
+]

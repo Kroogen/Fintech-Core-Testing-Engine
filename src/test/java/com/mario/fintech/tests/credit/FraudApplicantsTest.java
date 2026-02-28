@@ -13,13 +13,13 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.util.List;
 
-public class CreditScoreLogicTest {
+public class FraudApplicantsTest {
 
     private CreditService creditService;
 
     @DataProvider
     public Object[][] jsonDataProvider() throws IOException {
-        List<CreditTestData> testData = JsonDataReader.getTestData("valid_applicants.json");
+        List<CreditTestData> testData = JsonDataReader.getTestData("fraud_cases.json");
         Object[][] data = new Object[testData.size()][1];
         for (int i = 0; i < testData.size(); i++) {
             data[i][0] = testData.get(i);
@@ -33,26 +33,27 @@ public class CreditScoreLogicTest {
     }
 
     @Test(dataProvider = "jsonDataProvider", groups = "regression")
-    public void testLimitAndInterest(CreditTestData data) {
-        Applicant applicant = data.getApplicant();
-
+    public void testFraudApplicants(CreditTestData creditTestData) {
+        Applicant applicant = creditTestData.getApplicant();
         CreditResult creditResult = creditService.evaluateCredit(applicant);
         SoftAssert softAssert = new SoftAssert();
 
-        // Assert if the credit was approved
         softAssert.assertEquals(creditResult.isApproved(),
-                data.getCreditResult().isApproved(),
-                "The Approved is: " + creditResult.isApproved() + " but was expected:" + data.getCreditResult().isApproved());
+                creditTestData.getCreditResult().isApproved(),
+                "The credit approvation is: " + creditResult.isApproved() + " but should be: " + creditTestData.getCreditResult().isApproved());
 
-        // Assert the credit Limit
         softAssert.assertEquals(creditResult.getAssignedLimit(),
-                data.getCreditResult().getAssignedLimit(),
-                "The Obtained limit is: " + creditResult.getAssignedLimit() + " but was expected: " + data.getCreditResult().getAssignedLimit());
+                creditTestData.getCreditResult().getAssignedLimit(),
+                "The credit limit is: " + creditResult.getAssignedLimit() + " but should be: " + creditTestData.getCreditResult().getAssignedLimit());
 
-        // Assert the Interest Rate
         softAssert.assertEquals(creditResult.getInterestRate(),
-                data.getCreditResult().getInterestRate(),
-                "The Interest rate is: " + creditResult.getInterestRate() + " but was expected: " + data.getCreditResult().getInterestRate());
+                creditTestData.getCreditResult().getInterestRate(),
+                "The interest rate is: " + creditResult.getInterestRate() + " but should be: " + creditTestData.getCreditResult().getInterestRate());
+
+        softAssert.assertEquals(creditResult.getRejectionReason(),
+                creditTestData.getCreditResult().getRejectionReason(),
+                "The rejection reason is: " + creditResult.getRejectionReason() + " but should be: " + creditTestData.getCreditResult().getRejectionReason());
+
         softAssert.assertAll();
     }
 }

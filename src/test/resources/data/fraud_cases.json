@@ -1,0 +1,104 @@
+[
+  {
+    "description": "Fraud applicant DARTH VADER",
+    "applicant": {
+      "name": "DARTH VADER",
+      "age": 30,
+      "monthlyIncome": 25000,
+      "creditScore": 680,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  },
+  {
+    "description": "Fraud applicant HANNIBAL LECTER",
+    "applicant": {
+      "name": "HANNIBAL LECTER",
+      "age": 35,
+      "monthlyIncome": 33000,
+      "creditScore": 750,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  },
+  {
+    "description": "Fraud applicant LORD VOLDEMORT",
+    "applicant": {
+      "name": "LORD VOLDEMORT",
+      "age": 40,
+      "monthlyIncome": 40000,
+      "creditScore": 600,
+      "debtAmount": 0,
+      "employmentType": "RETIRED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  },
+  {
+    "description": "Fraud applicant FREDDY KRUEGER",
+    "applicant": {
+      "name": "FREDDY KRUEGER",
+      "age": 45,
+      "monthlyIncome": 12000,
+      "creditScore": 550,
+      "debtAmount": 0,
+      "employmentType": "FREELANCE"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  },
+  {
+    "description": "Fraud applicant MICHAEL MYERS",
+    "applicant": {
+      "name": "MICHAEL MYERS",
+      "age": 50,
+      "monthlyIncome": 21000,
+      "creditScore": 630,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  },
+  {
+    "description": "Fraud applicant LEX LUTHOR",
+    "applicant": {
+      "name": "LEX LUTHOR",
+      "age": 55,
+      "monthlyIncome": 60000,
+      "creditScore": 790,
+      "debtAmount": 0,
+      "employmentType": "SALARIED"
+    },
+    "creditResult": {
+      "approved": false,
+      "assignedLimit": 0.0,
+      "interestRate": 0.0,
+      "rejectionReason": "BLACKLISTED"
+    }
+  }
+]
