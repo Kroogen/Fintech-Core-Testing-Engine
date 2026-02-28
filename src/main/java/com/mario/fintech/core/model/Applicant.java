@@ -1,5 +1,7 @@
 package com.mario.fintech.core.model;
 
+import com.mario.fintech.core.model.enums.EmploymentType;
+
 public class Applicant {
 
     private String name;
@@ -7,6 +9,7 @@ public class Applicant {
     private double monthlyIncome;
     private int creditScore;
     private double debtAmount;
+    private EmploymentType employmentType;
 
     public Applicant() {
     }
@@ -16,7 +19,7 @@ public class Applicant {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     public int getAge() {
@@ -49,6 +52,14 @@ public class Applicant {
 
     public void setDebtAmount(double debtAmount) {
         this.debtAmount = debtAmount;
+    }
+
+    public EmploymentType getEmploymentType() {
+        return this.employmentType;
+    }
+
+    public void setEmploymentType(EmploymentType employmentType) {
+        this.employmentType = employmentType;
     }
 
 }
