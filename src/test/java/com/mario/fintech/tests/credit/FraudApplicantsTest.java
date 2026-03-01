@@ -5,6 +5,7 @@ import com.mario.fintech.core.model.CreditResult;
 import com.mario.fintech.core.services.CreditService;
 import com.mario.fintech.tests.models.CreditTestData;
 import com.mario.fintech.tests.utils.JsonDataReader;
+import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.util.List;
 
+@Feature("Credit Engine")
+@Story("Fraud Prevention and Blacklist")
 public class FraudApplicantsTest {
 
     private CreditService creditService;
@@ -33,6 +36,8 @@ public class FraudApplicantsTest {
     }
 
     @Test(dataProvider = "jsonDataProvider", groups = "regression")
+    @Description("Ensures that applicants on the blacklist are automatically rejected with the correct reason (BLACKLISTED).")
+    @Severity(SeverityLevel.CRITICAL)
     public void testFraudApplicants(CreditTestData creditTestData) {
         Applicant applicant = creditTestData.getApplicant();
         CreditResult creditResult = creditService.evaluateCredit(applicant);

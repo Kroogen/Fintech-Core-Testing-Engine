@@ -5,6 +5,7 @@ import com.mario.fintech.core.model.CreditResult;
 import com.mario.fintech.core.services.CreditService;
 import com.mario.fintech.tests.models.CreditTestData;
 import com.mario.fintech.tests.utils.JsonDataReader;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -13,6 +14,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.List;
 
+@Feature("Credit Engine")
+@Story("Age Boundary Validation")
 public class AgeBoundaryTest {
 
     private CreditService creditService;
@@ -33,6 +36,8 @@ public class AgeBoundaryTest {
     }
 
     @Test(dataProvider = "jsonDataProvider", groups = "smoke")
+    @Description("Validates the credit eligibility based on age limits (18-75 years old) using Boundary Value Analysis.")
+    @Severity(SeverityLevel.BLOCKER)
     public void testAgeBoundary(CreditTestData testData) {
         Applicant applicant = testData.getApplicant();
         CreditResult creditResult = creditService.evaluateCredit(applicant);

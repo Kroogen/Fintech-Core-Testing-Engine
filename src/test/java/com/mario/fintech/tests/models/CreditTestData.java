@@ -25,4 +25,9 @@ public class CreditTestData {
         return creditResult;
     }
 
+    @Override
+    public String toString() {
+        return this.description != null ? this.description : "Test Case";
+    }
+
 }
