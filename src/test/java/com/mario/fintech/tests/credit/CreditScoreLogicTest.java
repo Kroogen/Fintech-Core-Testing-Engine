@@ -5,6 +5,7 @@ import com.mario.fintech.core.model.CreditResult;
 import com.mario.fintech.core.services.CreditService;
 import com.mario.fintech.tests.models.CreditTestData;
 import com.mario.fintech.tests.utils.JsonDataReader;
+import io.qameta.allure.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.util.List;
 
+@Feature("Credit Evaluation")
+@Story("Financial Logic Validation")
 public class CreditScoreLogicTest {
 
     private CreditService creditService;
@@ -33,6 +36,8 @@ public class CreditScoreLogicTest {
     }
 
     @Test(dataProvider = "jsonDataProvider", groups = "regression")
+    @Description("Validates that the assigned limit and interest rate match the business rules based on score and income")
+    @Severity(SeverityLevel.CRITICAL)
     public void testLimitAndInterest(CreditTestData data) {
         Applicant applicant = data.getApplicant();
 
