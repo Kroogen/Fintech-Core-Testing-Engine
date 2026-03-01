@@ -5,9 +5,12 @@ import com.mario.fintech.core.model.Applicant;
 import com.mario.fintech.core.model.CreditResult;
 import com.mario.fintech.core.model.enums.EmploymentType;
 import com.mario.fintech.core.model.enums.RejectionReason;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CreditService {
 
+    private static final Logger logger = LogManager.getLogger(CreditService.class);
     private final FraudService fraudService;
 
     private final int MIN_AGE = 18;
@@ -27,6 +30,8 @@ public class CreditService {
     }
 
     public CreditResult evaluateCredit(Applicant applicant) {
+        logger.info("Evaluating credit for applicant: {} - Age: {}", applicant.getName(), applicant.getAge());
+
         // Validate the applicant is able to be analized
         validateApplicant(applicant);
 
@@ -80,6 +85,7 @@ public class CreditService {
     }
 
     private CreditResult rejectedApplicant(RejectionReason rejectionReason) {
+        logger.warn("Credit not approved: {}", rejectionReason);
         return new CreditResult(false,
                 0.0,
                 0.0,
@@ -87,6 +93,7 @@ public class CreditService {
     }
 
     private CreditResult approveApplicant(double assignedLimit, double interestRate) {
+        logger.info("Credit approved with limit {} and interest rate {}", assignedLimit, interestRate);
         return new CreditResult(true,
                 assignedLimit,
                 interestRate,
@@ -95,9 +102,11 @@ public class CreditService {
 
     private void validateApplicant(Applicant applicant) {
         if (applicant == null) {
+            logger.error("Empty information applicant");
             throw new InvalidApplicantException("Applicant can't be null");
         }
         if (applicant.getName() == null || applicant.getName().isBlank()) {
+            logger.error("Missing important information [name]");
             throw new InvalidApplicantException("Applicant name is required");
         }
     }
